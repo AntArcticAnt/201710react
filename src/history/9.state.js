@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
  **/
 class Clock extends React.Component{
   constructor(props){
-    super(props);//super就指向父类的构造函数 this.props = props;
+    super(props);//super就指向父类的构造函数 this.props = props;是调用父类的代码，用来把props属性对象赋给this实例的props
     //当一个类继承另一个类的时候，需要先调用父类的构造函数
     this.state = {age:8,time:new Date()};
     console.log(1,this.state);
