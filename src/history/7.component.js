@@ -32,6 +32,17 @@ class Welcome extends React.Component{
     }
   }
 }
+class App extends React.Component{
+  render(){
+    return (
+      <div>
+        <Welcome username="mary"/>
+        <Welcome username="lilei"/>
+        <Welcome username="bob"/>
+      </div>
+    )
+  }
+}
 
 //传给Welcome组件的属性会全部封装到对象里作为实参传给组件函数
-ReactDOM.render(<Welcome username="zfpx" age="9" />,document.querySelector('#root'));
+ReactDOM.render(<App/>,document.querySelector('#root'));

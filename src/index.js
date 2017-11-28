@@ -1,1 +1,1 @@
-import './history/7.component'
+import './history/8.divided'
