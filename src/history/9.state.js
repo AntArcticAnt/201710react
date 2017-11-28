@@ -15,6 +15,7 @@ class Clock extends React.Component{
     super(props);//super就指向父类的构造函数 this.props = props;
     //当一个类继承另一个类的时候，需要先调用父类的构造函数
     this.state = {age:8,time:new Date()};
+    console.log(1,this.state);
   }
   //组件挂载完成后,因为只有在这个生命周期函里才有真实的DOM对象
   /**
@@ -22,17 +23,31 @@ class Clock extends React.Component{
    * 2. 除了构造函数外，永远不要直接操作this.state
    */
   componentDidMount(){
-    setInterval(()=>{
+    //把定时器的引用地址赋给当前组件timerID属性
+    this.timerID = setInterval(()=>{
       //this.state = {age:8,time:new Date()};
-     this.setState({time:new Date()});
+      console.log(this);
+      this.setState({time:new Date()});
      //调用setState不但会修改状态，还会重新调用render方法进行渲染
-    },1000)
+      console.log(2,this.state);
+    },1000);
+  }
+  //组件将要卸载
+  componentWillUnmount(){
+    //在组件将要卸载之前清除定时器
+    clearInterval(this.timerID);
+  }
+  //使用箭头函数的话this才会等于当前组件的实例
+  handleClick = ()=>{
+    //在某个DOM节点上卸载掉对应的react组件
+     ReactDOM.unmountComponentAtNode(document.querySelector('#root'));
   }
   render(){
     return (
       <div>
         <h3>当前时间 {this.state.age}</h3>
         <h4>{this.state.time.toLocaleString()}</h4>
+        <button onClick={this.handleClick}>自杀</button>
       </div>
     )
   }
