@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 //1.处理视图，只是渲染页面
 //2.这是React发明的特殊的语法JSX=JavaScript+XML 就是JS和html混合写法,这并不是JS引擎原生支持的，所以要想在浏览器里执行，需要先转成ES5代码
 //3.React元素，它的写法很像html标签
+let ele = createElement('h1', { id: "msg" }, 'hello');
 render(
-  <h1 id="msg">hello</h1>,
+  ele,
   document.querySelector('#root')
 );
 
 //转译之后会转成
 //1参数是元素的类型 2参数是属性对象 3.子元素
-let ele = createElement('h1', { id: "msg" }, 'hello');
+
 function createElement(type,props,children){
    return  {type,props:{...props,children}};
 }
