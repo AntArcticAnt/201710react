@@ -17,6 +17,7 @@ function createElement(type,props,children){
 //createElement方法执行完成后会返回一个虚拟DOM对象
 //它其实就是一个普通的JS对象，只不过它可以用来描述DOM对象样子
 console.log(ele);
+
 // {type:'h1',props:{id:'msg',children:'hello'}}
 //把一个虚拟DOM变成真实DOM并插入容器内部
 function render(virtualDOM,container){

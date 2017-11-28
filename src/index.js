@@ -1,1 +1,1 @@
-import './history/4.props'
+import './history/7.component'

@@ -20,3 +20,5 @@ render(<div id="row" className={className}
   <span dangerouslySetInnerHTML={{__html:str}}></span>
 </div>, document.querySelector('#root'));
 
+//元素事实上只是构成组件的一个部分
+//组件是一个更大的单位
