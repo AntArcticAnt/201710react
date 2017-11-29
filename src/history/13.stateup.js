@@ -22,7 +22,7 @@ class Input extends Component {
 class PercentageShower extends Component {
   render () {
     return (
-      <div></div>
+      <div>{(parseFloat(this.props.percent)*100).toFixed(2)+'%'}</div>
     )
   }
 }
@@ -40,7 +40,7 @@ class PercentageApp extends Component {
     return (
       <div>
         <Input setPercent={this.setPercent} percent={this.state.percent}/>
-        <PercentageShower/>
+        <PercentageShower percent={this.state.percent}/>
       </div>
     )
   }
