@@ -26,7 +26,7 @@ class PercentageShower extends Component {
     )
   }
 }
-//如果要让两个兄弟组件之间传递数据的话，需要找到他们共同的最近的父组先
+//如果要让两个兄弟组件之间传递数据的话，需要找到他们共同的最近的父祖先
 class PercentageApp extends Component {
   constructor(){
     super();
