@@ -11,6 +11,10 @@ export default class CommentApp extends Component {
       {id:2,author:'李四',content:'嗯!'}
     ]};
   }
+  addComment = (comment)=>{
+    comment.id = Date.now();
+    this.setState({comments:[...this.state.comments,comment]});
+  }
   render() {
     return (
       <div className="container">
@@ -24,7 +28,7 @@ export default class CommentApp extends Component {
                 <CommentList comments={this.state.comments}/>
               </div>
               <div className="panel-footer">
-                <CommentInput/>
+                <CommentInput addComment={this.addComment}/>
               </div>
             </div>
           </div>
