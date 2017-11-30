@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Sliders.css'
 import SliderItems from "./SliderItems";
+import SliderArrows from "./SliderArrows";
 export default class Sliders extends Component {
   constructor() {
     super();
@@ -30,6 +31,7 @@ export default class Sliders extends Component {
           index={this.state.index}
           speed={this.props.speed}
           images={this.props.images}/>
+        <SliderArrows/>
       </div>
     )
   }
