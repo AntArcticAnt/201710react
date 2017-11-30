@@ -3,6 +3,14 @@ import 'bootstrap/dist/css/bootstrap.css'
 import CommentList from "./CommentList";
 import CommentInput from "./CommentInput";
 export default class CommentApp extends Component {
+  constructor(){
+    super();
+    //评论列表的数组
+    this.state = {comments:[
+      {id:1,author:'张三',content:'今天天气真的很不错!'},
+      {id:2,author:'李四',content:'嗯!'},
+    ]};
+  }
   render() {
     return (
       <div className="container">
@@ -13,7 +21,7 @@ export default class CommentApp extends Component {
                 <h3 className="text-center">欢迎来到珠峰留言板</h3>
               </div>
               <div className="panel-body">
-                <CommentList/>
+                <CommentList comments={this.state.comments}/>
               </div>
               <div className="panel-footer">
                 <CommentInput/>
