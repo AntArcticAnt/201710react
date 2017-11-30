@@ -1,6 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+class ChildCounter extends React.Component{
+  //组件将要接收到新的属性
+  componentWillReceiveProps(){
+    console.log('ChildCounter 1.componentWillReceiveProps 组件将要接收到新的属性');
+  }
+  shouldComponentUpdate(props,state){
+    console.log('ChildCounter 2.shouldComponentUpdate 子组件是否要更新');
+   if(props.number<3){
+     return true;
+   }else{
+     return false;
+   }
+  }
+  render(){
+    return (
+      <div style={{border:'1px solid green'}}>
+        <p>{this.props.number}</p>
+      </div>
+    )
+  }
+}
 class Counter extends React.Component {
   //默认属性
   static defaultProps = {
@@ -41,9 +62,10 @@ class Counter extends React.Component {
   render() {
     console.log('2. 渲染 render');
     return (
-      <div>
+      <div style={{border:'1px solid red'}}>
         <p>{this.state.number}</p>
         <button onClick={this.handleClick}>+</button>
+        <ChildCounter number={this.state.number}/>
       </div>
     )
   }

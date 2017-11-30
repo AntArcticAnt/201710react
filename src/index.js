@@ -1,1 +1,1 @@
-import './history/16.lifecycle'
+import './components/index'
