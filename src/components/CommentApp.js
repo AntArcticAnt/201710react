@@ -8,7 +8,7 @@ export default class CommentApp extends Component {
     //评论列表的数组
     this.state = {comments:[
       {id:1,author:'张三',content:'今天天气真的很不错!'},
-      {id:2,author:'李四',content:'嗯!'},
+      {id:2,author:'李四',content:'嗯!'}
     ]};
   }
   render() {
