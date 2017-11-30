@@ -60,3 +60,21 @@ ul, li {
     float:right;
     margin-right:5px;
 }
+.wrapper .dots{
+    position: absolute;
+    bottom:10px;
+    width:100%;
+    text-align: center;
+}
+.dots .dot{
+    width:15px;
+    height:15px;
+    border-radius: 50%;
+    display:inline-block;
+    margin-left:5px;
+    background-color: lightgray;
+    cursor: pointer;
+}
+.dots .dot.active{
+    background-color: green;
+}
