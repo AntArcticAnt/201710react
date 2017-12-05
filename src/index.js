@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Counter from "./comps/Counter";
+import Counter1 from "./comps/Counter1";
+import Counter2 from "./comps/Counter2";
 
-ReactDOM.render(<Counter/>,document.querySelector('#root'));
+ReactDOM.render(<div>
+  <Counter1/>
+  <Counter2/>
+</div>,document.querySelector('#root'));
