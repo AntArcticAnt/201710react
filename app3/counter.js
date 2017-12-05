@@ -19,3 +19,11 @@ function render(){
   document.querySelector('#number').innerText = store.getState().number;
 }
 render();
+//每当仓库中状态发生改变的时候,会重新调用render方法渲染页面，以保证页面的内容和仓库中的状态保持一致
+store.subscribe(render);
+document.querySelector('#add-button').addEventListener('click',function(){
+  store.dispatch({type:"ADD"});
+})
+document.querySelector('#sub-button').addEventListener('click',function(){
+  store.dispatch({type:"SUB"});
+})
