@@ -3,17 +3,8 @@
 function createStore(reducer){
 //数据源，也就是初始状态或者叫初始数据
   // redux规定，仓库每收到action之后不能修改原始的状态对象，而是一定返回一个新的状态对象
-  let state = {
-    defaultColor:'blue',//默认颜色
-    title:{
-      text:'标题',
-      color:'red'
-    },
-    content:{
-      text:'内容',
-      color:'green'
-    }
-  }
+  let state;
+  let listeners = [];
   //定义一个获取状态的方法,为了防止外部修改，一般把状态对象进行深度克隆
   let getState = ()=>JSON.parse(JSON.stringify(state));
   //action是一个动作对象，描述了想发射的动作类型,必须有一个type属性
@@ -26,8 +17,10 @@ function createStore(reducer){
     //让保存起来的每个监听函数立刻执行
     listeners.forEach(listener=>listener());
   }
+  //在仓库内部先调用一下dispatch方法，以便让state获得默认值
+  dispatch({});
   //订阅仓库中的状态变化事件,需要传入一个回调函数(监听函数),当仓库中状态发生变化的时候会调用这些监听函数
-  let listeners = [];
+
   let subscribe = (listener)=>{
     //监听函数先不执行，先保存在仓库的内部
     listeners.push(listener);
@@ -46,7 +39,20 @@ function createStore(reducer){
 //state是老状态 上一个状态对象
 //action是动作对象
 //返回新的状态对象
-function reducer(state,action){
+let initState = {
+  defaultColor:'blue',//默认颜色
+  title:{
+    text:'标题',
+    color:'red'
+  },
+  content:{
+    text:'内容',
+    color:'green'
+  }
+};
+//给state定义一个默认状态
+//在仓库里第一次调用dispatch的时候，状态对象为undefined,会走默认状态对象
+function reducer(state=initState,action){
   //判断动作类型
   switch(action.type){
     case 'UPDATE_TITLE_TEXT'://更新标题的内容
@@ -55,7 +61,7 @@ function reducer(state,action){
     case 'UPDATE_CONTENT_COLOR'://更新内容的颜色
       return  {...state,content:{...state.content,color:action.color}};
     default:
-      break;
+      return state;
   }
 }
 //调用createStore方法返回一个仓库对象
