@@ -39,6 +39,16 @@ export function createStore(reducer){
 //合并多个reducer
 //因为我状态树只有一个，处理器也只有一个
 //但应用非常复杂，如果所有的处理程序都写在一起的非常难以维护，所以我们选择分开写，写很多小的reducer,每个reducer只负责自己的逻辑和状态，最后由此方法进行合并，合并成一个最终唯 一的reducer
-export function combineReducers(){
-
+export function combineReducers(reducers){
+  //返回的是合并后的reducer
+  return function(state,action){
+    let result = {};//合并后的状态对象
+    //此处我们要把老状态和action传给各个小的reducer,然后由小的reducer返回新的单个状态，然后再合并到大的result状态对象上
+    //[counter1,counter2]
+    Object.keys(reducers).forEach(key=>{
+    //result['counter1'] = reducers['counter1'](state['counter1'],action);
+      result[key]=reducers[key](state&&state[key],action);
+    });
+    return result;
+  }
 }

@@ -10,12 +10,13 @@ import store from '../store';
 export default class Counter1 extends Component {
   constructor(){
     super();
-    this.state = {number:store.getState().number};
+    //{count1:{number:0},count2:{number:0}}
+    this.state = {number:store.getState().counter1.number};
   }
   //从 React16开始，不要再用WillMount,因为WillMount可能会触发多次
   componentDidMount(){
     this.unSubscribe = store.subscribe(()=>{
-      this.setState({number:store.getState().number});
+      this.setState({number:store.getState().counter1.number});
     })
   }
   //Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component.
