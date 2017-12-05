@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import * as types from '../store/action-types';
+import actions from '../store/actions';
 import store from '../store';
 /**
  * 1. 完成reducer
@@ -17,16 +19,21 @@ export default class Counter extends Component {
       this.setState({number:store.getState().number});
     })
   }
+  //Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component.
   componentWillUnmount(){
     this.unSubscribe();
+  }
+  kill = ()=>{
+    ReactDOM.unmountComponentAtNode(document.querySelector('#root'));
   }
 
   render() {
     return (
       <div>
         <p>{this.state.number}</p>
-        <button onClick={()=>store.dispatch({type:types.ADD})}>+</button>
-        <button onClick={()=>store.dispatch({type:types.SUB})}>-</button>
+        <button onClick={()=>store.dispatch(actions.add(3))}>+</button>
+        <button onClick={()=>store.dispatch(actions.sub(2))}>-</button>
+        <button onClick={this.kill}>kill</button>
       </div>
     )
   }
