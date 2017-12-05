@@ -84,9 +84,10 @@ function renderContent(){
 }
 renderApp();
 //当仓库中的状态变化之后执行renderApp方法
-store.subscribe(renderApp);
+let unSubscribe = store.subscribe(renderApp);
 setTimeout(function(){
   store.dispatch({type:'UPDATE_TITLE_TEXT',text:'新标题'});
+  unSubscribe();
 },3000);
 setTimeout(function(){
   store.dispatch({type:'UPDATE_CONTENT_COLOR',color:'orange'});
