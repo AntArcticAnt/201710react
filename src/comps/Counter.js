@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import * as types from '../store/action-types';
 import actions from '../store/actions';
 import store from '../store';
 /**
