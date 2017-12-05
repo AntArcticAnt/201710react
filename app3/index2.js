@@ -1,15 +1,26 @@
+
+//函数作用域可以保护变量
+function createStore(){
 //数据源，也就是初始状态或者叫初始数据
-let state = {
-  defaultColor:'blue',//默认颜色
-  title:{
-    text:'标题',
-    color:'red'
-  },
-  content:{
-    text:'内容',
-    color:'green'
+  let state = {
+    defaultColor:'blue',//默认颜色
+    title:{
+      text:'标题',
+      color:'red'
+    },
+    content:{
+      text:'内容',
+      color:'green'
+    }
+  }
+  //定义一个获取状态的方法
+  let getState = ()=>state;
+  return {
+    getState
   }
 }
+//调用createStore方法返回一个仓库对象
+let store = createStore();
 //派发动作，如果有谁想改状态，必须调用方法
 //action是一个动作对象，描述了想发射的动作类型,必须有一个type属性
 //如果有人想改变状态，唯一的途径就是调用此方法
@@ -32,13 +43,13 @@ function renderApp(){
 }
 function renderTitle(){
   let title = document.querySelector('#title');
-  title.innerHTML = state.title.text;
-  title.style.color = state.title.color||state.defaultColor;
+  title.innerHTML = store.getState().title.text;
+  title.style.color = store.getState().title.color||store.getState().defaultColor;
 }
 function renderContent(){
   let content = document.querySelector('#content');
-  content.innerHTML = state.content.text;
-  content.style.color = state.content.color||state.defaultColor;
+  content.innerHTML = store.getState().content.text;
+  content.style.color = store.getState().content.color||store.getState().defaultColor;
 }
 renderApp();
 setTimeout(function(){
