@@ -1,0 +1,45 @@
+import React,{Component} from 'react';
+class Post extends Component {
+  render () {
+    return (
+      <div>
+        <p>{this.props.content}</p>
+        <button onClick={() => this.props.refresh()}>刷新</button>
+      </div>
+    )
+  }
+}
+Post = loadAndRefresh('http://localhost:8080/post')(Post)
+
+function loadAndRefresh(url){
+  return function(CommonComponent){
+    class HighOrder extends Component{
+      constructor(){
+        super();
+        this.state ={content:''};
+      }
+      componentDidMount(){
+       this.loadData();
+      }
+      loadData = ()=>{
+        getData(url).then(content=>{
+          this.setState({content});
+        });
+      }
+      render(){
+        return <CommonComponent
+          content={this.state.content}
+          refresh={this.loadData}
+        />
+      }
+    }
+  }
+}
+function getData(url){
+  return fetch(url,{
+    method:'GET',
+    headers:{//请求头
+      "Accept":"application/json"//告诉 服务器我需要什么样的数据格式
+    }
+  }).then(res=>res.json());//得到JSON格式的响应体
+}
