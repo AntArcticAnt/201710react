@@ -12,6 +12,8 @@ export default function(state=initState,action){
  switch(action.type){
    case types.ADD_TODO:
      return [...state,{id:Date.now(),completed:false,text:action.text}];
+   case types.DEL_TODO:
+     return state.filter(item=>item.id!=action.id);
    default:
      return state;
  }

@@ -26,3 +26,10 @@ export default class Todos extends Component {
     )
   }
 }
+/**
+ * 增加一个功能
+ * 1. 增加一个action-type DEL_TODO
+ * 2. 给reducer增加一个 case types.DEL_TODO:
+ * 3. 给actions增加一个方法 delTodo
+ * 4. 在组件里调用action的方法
+ **/
