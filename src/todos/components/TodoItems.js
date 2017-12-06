@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
-export default class TodoItems extends Component {
+import {connect} from 'react-redux';
+class TodoItems extends Component {
   render() {
     return (
       <ul className="list-group">
-        <li className="list-group-item">学习React</li>
+        {
+          this.props.todos.map((item,index)=>(
+            <li key={item.id} className="list-group-item">
+              {item.text}
+            </li>
+          ))
+        }
       </ul>
     )
   }
 }
+export default connect(
+  state=>state
+)(TodoItems);
