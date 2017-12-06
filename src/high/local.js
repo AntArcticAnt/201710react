@@ -13,7 +13,7 @@ export default function(CommComponent,key){
      }
      componentDidMount(){//组件挂载完成后
        //先获取到local里key对应的值
-       let value = localStorage.getItem(key);
+       let value = localStorage.getItem(key)||"";
        this.setState({value});
      }
      render(){
