@@ -4,11 +4,14 @@
  * 2. 如果想改动作的类型改一个地方就可以
  * 3. 不容易写错
  */
+
+//counter1
 //加1
 export const ADD1 = 'ADD1';
 //减1
 export const SUB1 = 'SUB1';
 
+//counter2
 //加1
 export const ADD2 = 'ADD2';
 //减1
