@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import actions from '../store/actions';
+import actions from '../store/actions/counter1';
 import store from '../store';
 /**
  * 1. 完成reducer

@@ -5,6 +5,11 @@
  * 3. 不容易写错
  */
 //加1
-export const ADD = 'ADD';
+export const ADD1 = 'ADD1';
 //减1
-export const SUB = 'SUB';
+export const SUB1 = 'SUB1';
+
+//加1
+export const ADD2 = 'ADD2';
+//减1
+export const SUB2 = 'SUB2';

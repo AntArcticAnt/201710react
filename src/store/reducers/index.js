@@ -3,6 +3,7 @@ import {combineReducers} from '../../redux';
 import counter1 from './counter1';
 //{number:0}
 import counter2 from './counter2';
+//返回一个合并后的reducer
 let reducer = combineReducers({
   counter1,
   counter2
