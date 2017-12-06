@@ -4,12 +4,13 @@ class Post extends Component {
     return (
       <div>
         <p>{this.props.content}</p>
-        <button onClick={() => this.props.refresh()}>刷新</button>
+        <button onClick={this.props.refresh}>刷新</button>
       </div>
     )
   }
 }
 Post = loadAndRefresh('http://localhost:8080/post')(Post)
+export default Post;
 
 function loadAndRefresh(url){
   return function(CommonComponent){
@@ -22,8 +23,8 @@ function loadAndRefresh(url){
        this.loadData();
       }
       loadData = ()=>{
-        getData(url).then(content=>{
-          this.setState({content});
+        getData(url).then(data=>{
+          this.setState(data);
         });
       }
       render(){
@@ -33,6 +34,7 @@ function loadAndRefresh(url){
         />
       }
     }
+    return HighOrder;
   }
 }
 function getData(url){
