@@ -4,7 +4,6 @@
  **/
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Post from "./high/Post";
-ReactDOM.render(<form>
-  <Post/>
-</form>,document.querySelector('#root'));
+import App from "./context/App";
+
+ReactDOM.render(<App/>,document.querySelector('#root'));

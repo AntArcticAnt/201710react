@@ -3,6 +3,7 @@ class Post extends Component {
   render () {
     return (
       <div>
+        <p>{this.props.name}</p>
         <p>{this.props.content}</p>
         <button onClick={this.props.refresh}>刷新</button>
       </div>
@@ -28,9 +29,13 @@ function loadAndRefresh(url){
         this.setState(data);
       }
       render(){
+        let props = {
+          ...this.props,
+          content:this.state.content,
+          refresh:this.loadData.bind(this)
+        }
         return <CommonComponent
-          content={this.state.content}
-          refresh={this.loadData.bind(this)}
+          {...props}
         />
       }
     }
