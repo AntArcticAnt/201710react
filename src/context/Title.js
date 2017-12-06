@@ -9,6 +9,7 @@ export default class Title extends Component {
   }
   //this.context是上下文对象
   render() {
+    console.log(this.context);
     return (
       <div style={{color:this.context.color}}>
         Title

@@ -8,11 +8,12 @@ import PropTypes from 'prop-types';
 export default class App extends Component {
   //规定了子上下文对象中的属性名称和类型以及是否必填
   static childContextTypes = {
-     color:PropTypes.string.isRequired
+     color:PropTypes.string.isRequired,
+    name:PropTypes.string.isRequired
   }
   //指定上下文对象,在所有的子组件里都可以直接获取到这个对象
   getChildContext(){
-    return {color:'red'}
+    return {color:'red',name:'zfpx'}
   }
   render() {
     return (
