@@ -12,4 +12,4 @@ class Username extends Component {
   }
 }
 
-export default loadDataFromAjax(Username,'/username');
+export default loadDataFromLocal('username')(Username);
