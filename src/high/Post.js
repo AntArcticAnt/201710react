@@ -22,15 +22,15 @@ function loadAndRefresh(url){
       componentDidMount(){
        this.loadData();
       }
-      loadData = ()=>{
-        getData(url).then(data=>{
-          this.setState(data);
-        });
+      async loadData(){
+        this.setState({content:'数据加载中...'});
+        let data = await getData(url);
+        this.setState(data);
       }
       render(){
         return <CommonComponent
           content={this.state.content}
-          refresh={this.loadData}
+          refresh={this.loadData.bind(this)}
         />
       }
     }
