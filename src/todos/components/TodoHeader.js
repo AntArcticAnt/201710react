@@ -2,11 +2,22 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import todos from '../store/actions/todos';
 class TodoHeader extends Component{
+    handleKeyDown = (event)=>{
+      let keyCode = event.keyCode;
+      if(keyCode == 13){
+        let text = event.target.value;
+        if(text!=""&&text.length>0){
+          this.props.addTodo(text);
+          event.target.value = '';
+        }
+      }
+    }
     render(){
-      //todos filter addTodo
-      console.log(this.props);
       return (
-          <input type="text" className="form-control" placeholder="请输入你想办的事"/>
+          <input
+            onKeyDown={this.handleKeyDown}
+            type="text"
+            className="form-control" placeholder="请输入你想办的事"/>
         )
     }
 }
