@@ -11,8 +11,9 @@ export default store;
  *
  * createStore 仓库仓库
  * combineReducers 合并多个reducer
+ * bindActionCreators 绑定ActionCreators
  *
  * applyMiddleware
- * bindActionCreators
+ *
  * compose
  */

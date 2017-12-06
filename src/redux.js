@@ -52,3 +52,7 @@ export function combineReducers(reducers){
     return result;
   }
 }
+
+export function bindActionCreators(actions,dispatch){
+
+}

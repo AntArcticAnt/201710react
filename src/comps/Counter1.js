@@ -31,8 +31,8 @@ export default class Counter1 extends Component {
     return (
       <div>
         <p>{this.state.number}</p>
-        <button onClick={()=>store.dispatch(actions.add(3))}>+</button>
-        <button onClick={()=>store.dispatch(actions.sub(2))}>-</button>
+        <button onClick={()=>actions.add(3)}>+</button>
+        <button onClick={()=>actions.sub(2)}>-</button>
         <button onClick={this.kill}>kill</button>
       </div>
     )
