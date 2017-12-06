@@ -5,14 +5,16 @@ import PropTypes from 'prop-types';
 export default class Title extends Component {
   //规定了本组件的上下文类型
   static contextTypes = {
-    color:PropTypes.string.isRequired
+    color:PropTypes.string.isRequired,
+    setColor:PropTypes.func
   }
   //this.context是上下文对象
   render() {
-    console.log(this.context);
     return (
       <div style={{color:this.context.color}}>
-        Title
+        标题
+        <button onClick={()=>this.context.setColor('red')}>红</button>
+        <button onClick={()=>this.context.setColor('green')}>绿</button>
       </div>
     )
   }
