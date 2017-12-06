@@ -1,4 +1,6 @@
+import * as types from '../action-types';
 let initState = [];
+
 /**
  * 1.增加一个todo {id:1,completed:false,text:'学习'}
  * 2.删除一个todo
@@ -7,5 +9,10 @@ let initState = [];
  * 5.修改todo内容
  */
 export default function(state=initState,action){
-
+ switch(action.type){
+   case types.ADD_TODO:
+     return [...state,{id:Date.now(),completed:false,text:action.text}];
+   default:
+     return state;
+ }
 }
