@@ -25,7 +25,11 @@ export class Provider extends React.Component {
 }
 //mapStateToProps 把仓库的合并后的状态对象映射为属性对象
 //mapDispatchToProps 把dispatch方法映射为属性对象
-export const connect = (mapStateToProps, mapDispatchToProps) => OldComponent => {
+export const connect = (mapStateToProps, actions) => OldComponent => {
+  /**
+   * 1.没有UI
+   *
+   */
   class NewComponent extends React.Component {
     static contextTypes = {//这表示我要从上下文对象接收store属性
       store: PropTypes.object
@@ -48,10 +52,16 @@ export const connect = (mapStateToProps, mapDispatchToProps) => OldComponent => 
       this.unSubscribe();
     }
     render() {
+      if(typeof actions =='function'){
+        actions = actions(this.context.store.dispatch,this.props);
+      }else if(typeof actions =='object'){
+        actions = bindActionCreators(actions,this.context.store.dispatch)
+      }
+      console.log(actions);
       let props = {
         ...this.props,//传给新组件的属性对象原封不动的传给老组件
         ...this.state,//添加当前新组件的状态对象作为老组件的属性对象
-        ...bindActionCreators(mapDispatchToProps,this.context.store.dispatch)//把绑定后的actionCreator作为属性对象也传进给了OldComponent
+        ...actions//把绑定后的actionCreator作为属性对象也传进给了OldComponent
       }
       return <OldComponent {...props}/>
     }
