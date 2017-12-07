@@ -51,9 +51,8 @@ export const connect = (mapStateToProps, mapDispatchToProps) => OldComponent => 
       let props = {
         ...this.props,//传给新组件的属性对象原封不动的传给老组件
         ...this.state,//添加当前新组件的状态对象作为老组件的属性对象
-        ...bindActionCreators(mapDispatchToProps,this.context.store.dispatch)
+        ...bindActionCreators(mapDispatchToProps,this.context.store.dispatch)//把绑定后的actionCreator作为属性对象也传进给了OldComponent
       }
-      console.log(props);
       return <OldComponent {...props}/>
     }
   }
