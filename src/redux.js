@@ -68,6 +68,7 @@ export function compose(...fns) {
   return a => fns.reduceRight((val, item) => item(val), a);
 }
 //应用中间件 此方法返回一个也是一个仓库, 只不过这个仓库的dispatch方法是被加强过的
+//中间件解决的问题核心是在派发action之后到执行reducer之间加一些自定义的逻辑
 export const applyMiddleware = (...middlewares) => (createStore) => reducer => {
    //创建一个仓库
    let store = createStore(reducer);
