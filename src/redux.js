@@ -33,7 +33,7 @@ export function createStore(reducer){
   return {
     getState,//获取当前的最新的状态
     dispatch,//派发动作
-    subscribe
+    subscribe//订阅
   }
 }
 //合并多个reducer
@@ -54,5 +54,11 @@ export function combineReducers(reducers){
 }
 
 export function bindActionCreators(actions,dispatch){
-
+  let newActions = {};
+  //循环老的actioncreators的所有的key,
+  for(let key in actions){
+    //dispatch({type:types.ADD1,payload:{amount:3}})
+    newActions[key]= (...args)=>dispatch(actions[key].apply(null,args));
+  }
+  return newActions;
 }

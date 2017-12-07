@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Todos from "./todos/components/Todos";
-//让react组件和仓库关联起来
-//Provider是向子组件提供store的,会把属性中的store放在子上下文对象中,让下层组件可以获得这个仓库
-import {Provider} from 'react-redux';
-import store from './todos/store';
-ReactDOM.render((
-  <Provider store={store}>
-    <Todos/>
-  </Provider>
-), document.querySelector('#root'));
+import Counter1 from "./counter/comps/Counter1";
+import Counter2 from "./counter/comps/Counter2";
+
+ReactDOM.render(<div>
+  <Counter1/>
+  <Counter2/>
+</div>,document.querySelector('#root'));
+/**
+ * 1. 导入并渲染Counter1 Counter2组件
+ * 2.
+ **/
