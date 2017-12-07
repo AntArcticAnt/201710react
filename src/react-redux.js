@@ -53,6 +53,7 @@ export const connect = (mapStateToProps, mapDispatchToProps) => OldComponent => 
         ...this.state,//添加当前新组件的状态对象作为老组件的属性对象
         ...bindActionCreators(mapDispatchToProps,this.context.store.dispatch)
       }
+      console.log(props);
       return <OldComponent {...props}/>
     }
   }

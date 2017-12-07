@@ -7,8 +7,8 @@ class Counter1 extends Component {
     return (
       <div>
         <p>数字:{this.props.number}</p>
-        <button onClick={()=>actions.add(3)}>+</button>
-        <button onClick={()=>actions.sub(2)}>-</button>
+        <button onClick={()=>this.props.add(3)}>+</button>
+        <button onClick={()=>this.props.sub(2)}>-</button>
       </div>
     )
   }
