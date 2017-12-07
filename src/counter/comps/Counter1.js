@@ -1,35 +1,23 @@
 import React, {Component} from 'react';
+import {connect} from '../../react-redux';
 import actions from '../store/actions/counter1';
-import store from '../store';
-/**
- * 1. 完成reducer
- * 2. 绑定减1的事件处理函数
- * 3. 让当前组件订阅仓库状态变化事件，当仓库状态发生改变后要生渲染组件
- */
-export default class Counter1 extends Component {
-  constructor(){
-    super();
-    //{count1:{number:0},count2:{number:0}}
-    this.state = {number:store.getState().counter1.number};
-  }
-  //从 React16开始，不要再用WillMount,因为WillMount可能会触发多次
-  componentDidMount(){
-    this.unSubscribe = store.subscribe(()=>{
-      this.setState({number:store.getState().counter1.number});
-    })
-  }
-  //Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component.
-  componentWillUnmount(){
-    this.unSubscribe();
-  }
 
+class Counter1 extends Component {
   render() {
     return (
       <div>
-        <p>{this.state.number}</p>
+        <p>数字:{this.props.number}</p>
         <button onClick={()=>actions.add(3)}>+</button>
         <button onClick={()=>actions.sub(2)}>-</button>
       </div>
     )
   }
 }
+//返回一个对象，这个对象的属性可能比原来状态 多，也有可能比原来的状态少
+//{counter1:{number:1},counter2:{number:0}}
+let mapStateToProps = state=>state.counter1;
+//let mapDispatchToProps = actions;
+export default connect(
+  mapStateToProps,
+  actions
+)(Counter1);

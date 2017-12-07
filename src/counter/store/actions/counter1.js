@@ -1,7 +1,5 @@
 import * as types from '../action-types';
-import store from '../../store';
-import {bindActionCreators} from '../../../redux';
-let actions = {
+export default  {
   //因为这个函数返回一个Action,那么这个函数为Action Creator
   add(amount){
     //payload就是携带的数据
@@ -12,7 +10,7 @@ let actions = {
     return {type:types.SUB1,payload:{amount}};
   }
 };
-export default bindActionCreators(actions,store.dispatch);
+/*export default bindActionCreators(actions,store.dispatch);*/
 /*
 
 let bindEd =
