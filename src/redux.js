@@ -72,16 +72,16 @@ export const applyMiddleware = (...middlewares) => (createStore) => reducer => {
    //创建一个仓库
    let store = createStore(reducer);
    //先缓存老的dispatch方法
-   let dispatch = store.dispatch;
+   let _dispatch = store.dispatch;
    //这一步是为了把最外层的给剥掉
    middlewares = middlewares.map(ware=>ware({
-     dispatch:action=>dispatch(action),
+     dispatch:action=>_dispatch(action),
      getState:store.getState
    }));
    //把中间件进行组合
-   dispatch = compose(...middlewares)(dispatch);
+  _dispatch = compose(...middlewares)(_dispatch);
    return {
      ...store,
-     dispatch
+     dispatch:_dispatch
    };
 }

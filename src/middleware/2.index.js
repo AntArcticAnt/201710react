@@ -8,13 +8,18 @@ let reducer = (state=0,action)=>{
  }
 }
 //日志中间件
-let logger = ({dispatch,getState})=> next => action =>{
-  console.log('before',getState());
+//下一个的意思是下一个中间件或者真正的dispatch方法
+let logger1 = ({dispatch,getState})=> next => action =>{
+  console.log('before1',getState());
   next(action);
-  console.log('after',getState());
+  console.log('after1',getState());
+}
+let logger2 = ({dispatch,getState})=> next => action =>{
+  console.log('before2',getState());
+  next(action);
+  console.log('after2',getState());
 }
 //创建仓库
-let store = applyMiddleware(logger)(createStore)(reducer);
+let store = applyMiddleware(logger2,logger1)(createStore)(reducer);
 
-store.dispatch({type:'ADD'});
 store.dispatch({type:'ADD'});
