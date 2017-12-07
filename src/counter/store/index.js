@@ -12,8 +12,6 @@ export default store;
  * createStore 仓库仓库
  * combineReducers 合并多个reducer
  * bindActionCreators 绑定ActionCreators,跟dispatch方法绑定
- * compose
- *
- * applyMiddleware
- *
+ * compose 组合多个函数
+ * applyMiddleware 应用中间件
  */

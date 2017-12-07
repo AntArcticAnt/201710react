@@ -37,5 +37,8 @@ function compose(...fns) {
   return a => fns.reduceRight((val, item) => item(val), a);
 }
 let len = compose(length, upperCase, join);
+
+length(upperCase(join('a')))
+
 let result = len('a');
 console.log(result);
