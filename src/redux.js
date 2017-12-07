@@ -58,7 +58,7 @@ export function bindActionCreators(actions,dispatch){
   //循环老的actioncreators的所有的key,
   for(let key in actions){
     //dispatch({type:types.ADD1,payload:{amount:3}})
-    newActions[key]= (...args)=>dispatch(actions[key].apply(null,args));
+    newActions[key]= (...args)=>dispatch(actions[key](...args));
   }
   return newActions;
 }
