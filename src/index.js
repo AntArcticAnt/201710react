@@ -1,1 +1,1 @@
-import './middleware/3.index'
+import './sliders/index'
