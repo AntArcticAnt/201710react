@@ -7,7 +7,7 @@ export default class SliderItems extends Component {
       transitionDuration:this.props.speed+'s'
     }
     return (
-      <ul ref={input=>this.props.setSliders(input)} className="sliders" style={style}>
+      <ul ref={xx=>this.props.setSliders(xx)} className="sliders" style={style}>
         {
           this.props.images.map((item, index) => (
             <li key={index} className="slider">

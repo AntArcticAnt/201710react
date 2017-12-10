@@ -10,7 +10,7 @@ export default class Sliders extends Component {
   }
   turn = (step)=>{
     let index = this.state.index + step;
-    if(index > this.props.images.length){
+    if(index >= this.props.images.length+1){
        this.sliders.style.transitionDuration = '0s';
        this.sliders.style.left = 0+'px';
        //强行让浏览器重绘
