@@ -26,7 +26,7 @@ class Todos extends React.Component {
                   timeout={500}
                   key={item.id}
                 >
-                  <li >{item.title}</li>
+                  <li >{item.title} <span>X</span></li>
                 </CSSTransition>
               ))
             }
