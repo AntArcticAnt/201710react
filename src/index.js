@@ -1,1 +1,1 @@
-import './sliders/index'
+import './animation/1.transition'
